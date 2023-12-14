@@ -8,8 +8,8 @@ function dotfiles {
    /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
 }
 
-mkdir -p .dot-backups
-dotfiles checkout
+mkdir -p .dotfiles-backups
+dotfiles checkout -q &> /dev/null
 
 if [ $? = 0 ]; then
   echo "Checked out dotfiles.";
