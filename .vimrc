@@ -74,6 +74,7 @@ set undodir=/tmp " undo things, yaaah
 set undofile " enable undo persistent, yaaaaaaaah
 set scrolloff=5
 set cursorcolumn
+set matchpairs+={:} " Highlight matching pairs of brackets. Use the '%' character to jump between them.
 
 " Remaps
 "
