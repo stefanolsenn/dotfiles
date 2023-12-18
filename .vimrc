@@ -88,18 +88,27 @@ nnoremap <C-L> :nohlsearch<CR>
 nnoremap <Leader>r :%s///g<Left><Left>
 nnoremap <Leader>rc :%s///gc<Left><Left><Left>
 
+" Disable arrow keys
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+
+
+" Commands
+"
+"
+
+" :ShowAll
+" Show all spaces and line endings
+command! -nargs=0 ShowAll execute "set list" | execute "set lcs+=space:·"
+" Hides all the line endings and spaces
+" :ShowAll
+" Show all spaces and line endings
+command! -nargs=0 ShowAll execute "set list" | execute "set lcs+=space:·"
+" Hides all the line endings and spaces
+command! -nargs=0 HideAll set nolist    
 " :W sudo saves the file
 " (useful for handling the permission-denied error)
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 
-" :ShowAll
-" Show all spaces and line endings
-command! -nargs=0 ShowAll execute "set list" | execute "set lcs+=space:·"
-
-" Hides all the line endings and spaces
-" :ShowAll
-" Show all spaces and line endings
-command! -nargs=0 ShowAll execute "set list" | execute "set lcs+=space:·"
-"
-" Hides all the line endings and spaces
-command! -nargs=0 HideAll set nolist    
