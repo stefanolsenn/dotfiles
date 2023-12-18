@@ -124,7 +124,7 @@ export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
 
 # Azure key vault
 if [[ -f $HOME/.azure-dev ]]; then
-        source .azure-dev
+        source $HOME/.azure-dev
 fi
 
 # Dotfiles 
