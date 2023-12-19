@@ -1,0 +1,8 @@
+[user]
+	name = Stefan Olsen
+	email = stol@cloudfactory.dk
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
