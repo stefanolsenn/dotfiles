@@ -122,6 +122,18 @@ alias repos='cd ~/repos/cloudfactorydk'
 export DOTNET_ROOT=$HOME/.dotnet
 export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
 
+# Helper function to install new dotnet versions
+#
+# To install .NET 6.0:
+# dotnet-install -c 6.0
+function dotnet-install {
+        if [[ ! -f $HOME/dotnet-install.sh ]]; then
+                wget https://dot.net/v1/dotnet-install.sh -O $HOME/dotnet-install.sh
+                chmod +x $HOME/dotnet-install.sh
+        fi
+        $HOME/dotnet-install.sh $@
+}
+
 # Azure key vault
 if [[ -f $HOME/.azure-dev ]]; then
         source $HOME/.azure-dev
@@ -138,3 +150,4 @@ git config --global alias.st status
 function rider() {
         /snap/bin/rider $@ &> /dev/null &
 }
+
