@@ -143,7 +143,7 @@ fi
 alias dotfiles='/usr/bin/git --git-dir=/home/stefan/.dotfiles/ --work-tree=/home/stefan'
 
 function rider() {
-        /snap/bin/rider $@ &> /dev/null &
+        /snap/bin/rider $@ > /dev/null 2>&1 &
 }
 
 # Causes bash to append to history instead of overwriting it so if you start a new terminal, you have old session history
@@ -152,3 +152,5 @@ PROMPT_COMMAND='history -a'
 
 # Don't put duplicate lines in the history and do not add lines that start with a space
 export HISTCONTROL=erasedups:ignoredups:ignorespace
+
+alias myip="curl https://ipinfo.io/json" # or /ip for plain-text ip

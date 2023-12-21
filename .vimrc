@@ -85,6 +85,8 @@ set undofile " enable undo persistent, yaaaaaaaah
 set scrolloff=5
 set cursorcolumn
 set matchpairs+={:} " Highlight matching pairs of brackets. Use the '%' character to jump between them.
+set clipboard=unnamedplus
+set paste
 
 " Remaps
 "
