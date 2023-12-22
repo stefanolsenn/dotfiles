@@ -5,13 +5,12 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-" Place Plugs here
+  Plug 'joshdick/onedark.vim'
 call plug#end()
 
 filetype off
 filetype plugin indent on
 syntax on
-packadd! onedark.vim
 colorscheme onedark
 
 " Enable 24-bit true colors if your terminal supports it.
@@ -101,11 +100,6 @@ nnoremap <C-L> :nohlsearch<CR>
 nnoremap <Leader>r :%s///g<Left><Left>
 nnoremap <Leader>rc :%s///gc<Left><Left><Left>
 
-" Disable arrow keys
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
 
 
 " Commands
