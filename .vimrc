@@ -8,8 +8,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'joshdick/onedark.vim'
 call plug#end()
 
-filetype off
-filetype plugin indent on
+filetype on
+filetype plugin on
+filetype indent on
 syntax on
 colorscheme onedark
 
@@ -61,13 +62,13 @@ let &statusline = s:statusline_expr()
 
 
 " Common things: https://vimdoc.sourceforge.net/htmldoc/options.html
+"set paste
 set ruler " Ruler in the right down corner
 set autoindent  
 "set colorcolumn=80
 set cursorline
 set directory=/tmp//,. " .swp directory
 set encoding=utf-8
-set expandtab smarttab " Converts tabs to spaces and uses a combination of spaces and tabs for smart indentation 
 set incsearch " Shows the matching search pattern incrementally as you type
 set ic " Ignore case
 set hlsearch " Highlight search
@@ -85,7 +86,6 @@ set scrolloff=5
 set cursorcolumn
 set matchpairs+={:} " Highlight matching pairs of brackets. Use the '%' character to jump between them.
 set clipboard=unnamedplus
-set paste
 
 " Remaps
 "
@@ -106,11 +106,6 @@ nnoremap <Leader>rc :%s///gc<Left><Left><Left>
 "
 "
 
-" :ShowAll
-" Show all spaces and line endings
-command! -nargs=0 ShowAll execute "set list" | execute "set lcs+=space:·"
-" Hides all the line endings and spaces
-" :ShowAll
 " Show all spaces and line endings
 command! -nargs=0 ShowAll execute "set list" | execute "set lcs+=space:·"
 " Hides all the line endings and spaces
