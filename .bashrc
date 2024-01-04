@@ -154,3 +154,4 @@ PROMPT_COMMAND='history -a'
 export HISTCONTROL=erasedups:ignoredups:ignorespace
 
 alias myip="curl https://ipinfo.io/json" # or /ip for plain-text ip
+
