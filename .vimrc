@@ -114,3 +114,4 @@ command! -nargs=0 HideAll set nolist
 " (useful for handling the permission-denied error)
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
