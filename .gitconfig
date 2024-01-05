@@ -6,5 +6,6 @@
 	br = branch
 	ci = commit
 	st = status
+	ps = push
 [core]
 	editor = vim

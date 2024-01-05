@@ -141,6 +141,7 @@ fi
 
 # Dotfiles 
 alias dotfiles='/usr/bin/git --git-dir=/home/stefan/.dotfiles/ --work-tree=/home/stefan'
+alias vi='/usr/bin/vim'
 
 # Causes bash to append to history instead of overwriting it so if you start a new terminal, you have old session history
 shopt -s histappend
@@ -158,7 +159,7 @@ export NVM_DIR="$HOME/.nvm"
 
 alias rider='$HOME/.scripts/rider.sh'
 
-
 function replace-all() {
 	grep -r $1 | awk -F ':' '{print $1}' | xargs sed -i 's/$1/$2/g'
 }
+alias sdn='shutdown now'
