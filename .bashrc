@@ -155,3 +155,6 @@ export HISTCONTROL=erasedups:ignoredups:ignorespace
 
 alias myip="curl https://ipinfo.io/json" # or /ip for plain-text ip
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
