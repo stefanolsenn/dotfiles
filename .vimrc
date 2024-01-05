@@ -6,7 +6,11 @@ endif
 
 call plug#begin('~/.vim/plugged')
   Plug 'joshdick/onedark.vim'
+  Plug 'pangloss/vim-javascript'
 call plug#end()
+
+" vim-javascript config
+let g:javascript_plugin_jsdoc = 1
 
 filetype on
 filetype plugin on
@@ -115,3 +119,4 @@ command! -nargs=0 HideAll set nolist
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
