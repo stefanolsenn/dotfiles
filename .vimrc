@@ -114,6 +114,8 @@ nnoremap <Leader>rc :%s///gc<Left><Left><Left>
 command! -nargs=0 ShowAll execute "set list" | execute "set lcs+=space:·"
 " Hides all the line endings and spaces
 command! -nargs=0 HideAll set nolist    
+" Remove all new lines in the file
+command! -nargs=0 RemoveNewLines execute '%s/\\$//e | %s/\n//g'
 " :W sudo saves the file
 " (useful for handling the permission-denied error)
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
