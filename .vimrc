@@ -104,6 +104,9 @@ nnoremap <C-L> :nohlsearch<CR>
 nnoremap <Leader>r :%s///g<Left><Left>
 nnoremap <Leader>rc :%s///gc<Left><Left><Left>
 
+" Select some text in visual mode and remove \n in the selection
+vnoremap <Leader>n :s/\%V\n//g<Left><Left>
+
 
 
 " Commands
