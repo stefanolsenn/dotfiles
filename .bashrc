@@ -157,3 +157,8 @@ export NVM_DIR="$HOME/.nvm"
 
 
 alias rider='$HOME/.scripts/rider.sh'
+
+
+function replace-all() {
+	grep -r $1 | awk -F ':' '{print $1}' | xargs sed -i 's/$1/$2/g'
+}
