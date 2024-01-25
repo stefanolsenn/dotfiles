@@ -163,3 +163,4 @@ function replace-all() {
 	grep -r $1 | awk -F ':' '{print $1}' | xargs sed -i 's/$1/$2/g'
 }
 alias sdn='shutdown now'
+. "$HOME/.cargo/env"

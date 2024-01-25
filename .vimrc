@@ -7,6 +7,8 @@ endif
 call plug#begin('~/.vim/plugged')
   Plug 'joshdick/onedark.vim'
   Plug 'pangloss/vim-javascript'
+  Plug 'rust-lang/rust.vim'
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 " vim-javascript config
