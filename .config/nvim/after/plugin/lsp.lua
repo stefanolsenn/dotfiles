@@ -7,8 +7,11 @@ lsp.ensure_installed({
   'tsserver',
   'rust_analyzer',
   'jsonls',
-  'gopls'
+  'gopls',
+  'lua_ls',
+  'yamlls'
 })
+
 
 -- Fix Undefined global 'vim'
 lsp.configure('lua-language-server', {
@@ -19,6 +22,17 @@ lsp.configure('lua-language-server', {
             }
         }
     }
+})
+lsp.configure("yamlls", {
+  settings = {
+    yaml = {
+      keyOrdering = false,
+      schemas = {
+	      composer =  "/*",
+	      kubernetes = "/*.yaml"
+      }
+    }
+  }
 })
 
 
