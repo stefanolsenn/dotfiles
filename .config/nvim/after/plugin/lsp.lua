@@ -28,8 +28,7 @@ lsp.configure("yamlls", {
     yaml = {
       keyOrdering = false,
       schemas = {
-	      composer =  "/*",
-	      kubernetes = "/*.yaml"
+	      composer =  "/*"
       }
     }
   }
