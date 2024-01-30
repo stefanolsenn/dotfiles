@@ -13,7 +13,6 @@ lsp.ensure_installed({
 })
 
 
--- Fix Undefined global 'vim'
 lsp.configure('lua-language-server', {
     settings = {
         Lua = {
@@ -24,14 +23,21 @@ lsp.configure('lua-language-server', {
     }
 })
 lsp.configure("yamlls", {
-  settings = {
-    yaml = {
-      keyOrdering = false,
-      schemas = {
-	      composer =  "/*"
-      }
-    }
-  }
+	settings = {
+		yaml= {
+			schemas = {
+				["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*"
+			},
+			schemaStore = {
+				url = "https://www.schemastore.org/api/json/catalog.json",
+				enable = true
+			}
+		},
+		validate = true,
+		format = {
+			enable = true
+		},
+	}
 })
 
 
@@ -69,6 +75,7 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
+
 
 lsp.setup()
 
