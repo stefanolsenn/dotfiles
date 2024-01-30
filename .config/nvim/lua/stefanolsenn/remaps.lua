@@ -24,4 +24,6 @@ vim.api.nvim_command("command! -nargs=0 RemoveNewLines execute '%s/\\$//e | %s/\
 -- :W sudo saves the file
 -- (useful for handling the permission-denied error)
 vim.api.nvim_command("command! -nargs=0 W execute 'w !sudo tee % > /dev/null' | edit!")
-
+vim.api.nvim_exec([[
+  autocmd BufWritePre *.yml lua vim.lsp.buf.format({ async = false })
+]], false)

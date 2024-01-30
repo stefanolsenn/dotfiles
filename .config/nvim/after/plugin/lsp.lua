@@ -13,7 +13,7 @@ lsp.ensure_installed({
 })
 
 
-lsp.configure('lua-language-server', {
+lsp.configure('lua_ls', {
     settings = {
         Lua = {
             diagnostics = {
@@ -26,11 +26,12 @@ lsp.configure("yamlls", {
 	settings = {
 		yaml= {
 			schemas = {
-				["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*"
+				["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+				--["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = {"**/docker-compose.yml", "**/docker-compose.yaml"}
 			},
 			schemaStore = {
 				url = "https://www.schemastore.org/api/json/catalog.json",
-				enable = true
+				--enable = true
 			}
 		},
 		validate = true,
