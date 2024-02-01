@@ -41,8 +41,12 @@ lsp.configure("yamlls", {
 	}
 })
 
+vim.b.copilot_enabled = false -- set to true to enable copilot
 
 local cmp = require('cmp')
+cmp.setup({
+	enabled = false, -- set to true for autocompletion
+})
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({
   ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
@@ -83,3 +87,9 @@ lsp.setup()
 vim.diagnostic.config({
     virtual_text = true
 })
+
+vim.api.nvim_exec([[
+autocmd FileType yaml       setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType html       setlocal ts=2 sts=2 sw=2 expandtab
+]], false)

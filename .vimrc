@@ -88,7 +88,7 @@ set smartcase " Makes searching case-sensitive only if the search pattern contai
 set ttyfast " wroom wrrooom, redraw text much faster
 set undodir=/tmp " undo things, yaaah
 set undofile " enable undo persistent, yaaaaaaaah
-set scrolloff=5
+set scrolloff=8
 set cursorcolumn
 set matchpairs+={:} " Highlight matching pairs of brackets. Use the '%' character to jump between them.
 set clipboard=unnamedplus
