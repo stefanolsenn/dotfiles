@@ -1,4 +1,6 @@
 local lsp = require("lsp-zero")
+local mason = require("mason")
+local mason_lspconfig = require("mason-lspconfig")
 
 lsp.preset("recommended")
 
@@ -9,9 +11,9 @@ lsp.ensure_installed({
   'jsonls',
   'gopls',
   'lua_ls',
-  'yamlls'
+  'yamlls',
+  'bashls'
 })
-
 
 lsp.configure('lua_ls', {
     settings = {
@@ -20,6 +22,17 @@ lsp.configure('lua_ls', {
                 globals = { 'vim' }
             }
         }
+    }
+})
+-- install shellcheck via apt or pacman
+lsp.configure('bashls', {
+    settings = {
+	bash = {
+	    filetypes = { "sh", "zsh", "bash" },
+	    format = {
+		enable = true
+	    }
+	}
     }
 })
 lsp.configure("yamlls", {
@@ -41,11 +54,11 @@ lsp.configure("yamlls", {
 	}
 })
 
-vim.b.copilot_enabled = false -- set to true to enable copilot
+vim.b.copilot_enabled = true -- set to true to enable copilot
 
 local cmp = require('cmp')
 cmp.setup({
-	enabled = false, -- set to true for autocompletion
+  enabled = false
 })
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({
@@ -83,6 +96,14 @@ end)
 
 
 lsp.setup()
+mason.setup({})
+mason_lspconfig.setup({
+  handlers = {
+    lsp.default_setup,
+  }
+})
+
+
 
 vim.diagnostic.config({
     virtual_text = true
