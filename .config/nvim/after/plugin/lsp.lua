@@ -58,7 +58,7 @@ vim.b.copilot_enabled = true -- set to true to enable copilot
 
 local cmp = require('cmp')
 cmp.setup({
-  enabled = false
+  enabled = true
 })
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({

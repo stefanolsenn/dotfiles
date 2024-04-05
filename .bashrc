@@ -141,8 +141,6 @@ fi
 
 # Dotfiles 
 alias dotfiles='/usr/bin/git --git-dir=/home/stefan/.dotfiles/ --work-tree=/home/stefan'
-alias vi=$(which nvim)
-alias vim=$(which nvim)
 
 # Causes bash to append to history instead of overwriting it so if you start a new terminal, you have old session history
 shopt -s histappend
