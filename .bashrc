@@ -171,6 +171,11 @@ function appsettings {
 	source="$HOME/repos/cloudfactorydk/appsettings.override.json"
 	dests=($1)
 
+	if [[ $1 == "--edit" ]]; then
+		vim $source
+		return
+	fi
+
 	if [[ ${#dests} -eq 0 ]]; then
 		search=$(grep -ril 'UseAzureKeyVault()' --include \*.cs)
 		if [[ -z "$search" ]]; then
