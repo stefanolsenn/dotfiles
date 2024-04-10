@@ -122,6 +122,8 @@ alias repos='cd ~/repos/cloudfactorydk'
 export DOTNET_ROOT=$HOME/.dotnet
 export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
 
+alias disk-usage='du -h --max-depth=1 .'
+
 # Helper function to install new dotnet versions
 #
 # To install .NET 6.0:
@@ -163,3 +165,26 @@ function replace-all() {
 }
 alias sdn='shutdown now'
 . "$HOME/.cargo/env"
+
+
+function appsettings {
+	source="$HOME/repos/cloudfactorydk/appsettings.override.json"
+	dests=($1)
+
+	if [[ ${#dests} -eq 0 ]]; then
+		search=$(find . -name Dockerfile)
+		if [[ -z "$search" ]]; then
+			echo "No destination could be satisfied"
+			echo "Usage: appsettings <dest>"
+			echo "If no dest is specified, it will try to find all directories with a Dockerfile"
+			return
+		fi
+		for s in $search; do
+			dests+=("$(dirname "$s")")
+		done
+	fi
+	for dest in "${dests[@]}"; do
+		cp -v "$source" "$dest"
+		#echo "source=$source dest=$dest"
+	done
+}
