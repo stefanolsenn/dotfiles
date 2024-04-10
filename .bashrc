@@ -172,7 +172,8 @@ function appsettings {
 	dests=($1)
 
 	if [[ ${#dests} -eq 0 ]]; then
-		search=$(find . -name Dockerfile)
+		#search=$(find . -name Dockerfile)
+		search=$(grep -ril 'UseAzureKeyVault()' --include \*.cs)
 		if [[ -z "$search" ]]; then
 			echo "No destination could be satisfied"
 			echo "Usage: appsettings <dest>"
