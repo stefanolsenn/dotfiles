@@ -172,12 +172,11 @@ function appsettings {
 	dests=($1)
 
 	if [[ ${#dests} -eq 0 ]]; then
-		#search=$(find . -name Dockerfile)
 		search=$(grep -ril 'UseAzureKeyVault()' --include \*.cs)
 		if [[ -z "$search" ]]; then
 			echo "No destination could be satisfied"
 			echo "Usage: appsettings <dest>"
-			echo "If no dest is specified, it will try to find all directories with a Dockerfile"
+			echo "If no dest is specified, it will try to find all directories where UseAzureKeyVault() defined"
 			return
 		fi
 		for s in $search; do
@@ -186,6 +185,5 @@ function appsettings {
 	fi
 	for dest in "${dests[@]}"; do
 		cp -v "$source" "$dest"
-		#echo "source=$source dest=$dest"
 	done
 }
