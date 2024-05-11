@@ -10,7 +10,7 @@ git clone --bare git@github.com:stefanolsenn/dotfiles.git $HOME/.dotfiles
 mkdir -p $HOME/.dotfiles-backups
 dotfiles checkout -q &> /dev/null
 
-if [[ $? = 0 ]]; then
+if [[ $? == 0 ]]; then
   echo "Checked out dotfiles.";
 else
   echo "Backing up pre-existing dot files.";
