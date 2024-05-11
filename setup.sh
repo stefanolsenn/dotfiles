@@ -21,6 +21,7 @@ else
   else
      dotfiles checkout
      dotfiles config status.showUntrackedFiles no
+     source $HOME/.bashrc
      echo "OK!"
   fi
 fi
