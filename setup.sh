@@ -16,7 +16,7 @@ else
   echo "Backing up pre-existing dot files.";
   dotfiles checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} $HOME/.dotfiles-backups/{}
   
-  if [[ $? != 0 ]]; then
+  if [[ $? -ne 0 ]]; then
      echo "Something went wronng"
   else
      dotfiles checkout
