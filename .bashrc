@@ -159,6 +159,7 @@ export NVM_DIR="$HOME/.nvm"
 
 
 alias rider='$HOME/.scripts/rider.sh'
+alias lines-of-code='find . -name "*.cs" -not -path "*/obj/*" | xargs wc -l'
 
 function replace-all() {
 	grep -r $1 | awk -F ':' '{print $1}' | xargs sed -i 's/$1/$2/g'

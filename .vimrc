@@ -111,10 +111,12 @@ vnoremap <Leader>n :s/\%V\n//g<Left><Left>
 
 
 
+
 " Commands
 "
-"
-
+" Open terminal in vertical - ctrl-w shift-N to use it as a buffer - press i
+" again to jump into it again
+command Terminal vert term
 " Show all spaces and line endings
 command! -nargs=0 ShowAll execute "set list" | execute "set lcs+=space:·"
 " Hides all the line endings and spaces
