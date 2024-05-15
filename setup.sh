@@ -1,48 +1,46 @@
-#!/bin/bash -e
+#!/bin/bash -x
 
 current_dir=$(pwd)
 dotfiles_dir="$HOME/.dotfiles"
 dotfiles_dir_backups="$HOME/.dotfiles-backups"
 
-function dotfiles {
-   /usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME" "$@"
+function dotfiles() {
+	/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME" "$@"
 }
-function remove_tracked_files() {
-	if [[ -d $dotfiles_dir ]]; then
-		cd $dotfiles_dir
-		tracked_files=$(git ls-files)
 
-		for file in $tracked_files;
-		do
-			rm -f $file
-		done
-
-		rm -rf $dotfiles_dir
-		rm -rf $dotfiles_dir_backups
-		cd $current_dir
+function exit_if_err() {
+	if [[ $? -ne 0 ]]; then
+		exit 1
 	fi
 }
 
-remove_tracked_files
-git clone --bare git@github.com:stefanolsenn/dotfiles.git "$HOME/.dotfiles"
-mkdir -p $dotfiles_dir_backups
+function clone() {
+	if [[ -d $dotfiles_dir ]]; then
+		rm -rf $dotfiles_dir
+	fi
+	git clone -q --bare git@github.com:stefanolsenn/dotfiles.git $dotfiles_dir 
+	echo "Cloned dotfiles"
+} 
 
-if dotfiles checkout -q &>/dev/null; then
-    echo "Checked out dotfiles."
-    echo "OK!"
-else
-    echo "Backing up pre-existing dot files."
+function backup_existing_files() {
+	mkdir -p $dotfiles_dir_backups 
+	cd $dotfiles_dir 
+	tracked_files=$(git ls-tree -r master --name-only)
 
-    dotfiles checkout 2>&1 | grep "^\s+" | awk '{print $1}' | xargs -I{} mv {} "$dotfiles_dir_backups/{}"
+	for file in $tracked_files;
+	do
+		mv -f $HOME/$file $dotfiles_dir_backups > /dev/null
+	done
 
-    if [ $? -ne 0 ]; then
-        echo "Failed to backup dotfiles."
-        exit 1
-    fi
+	cd $current_dir
+	echo "Backed up all existing files"
+}
 
-    dotfiles checkout
-    dotfiles config status.showUntrackedFiles no
-    source "$HOME/.bashrc"
-    echo "OK!"
-fi
+clone 
+backup_existing_files
+dotfiles checkout 
+exit_if_err
+dotfiles config status.showUntrackedFiles no
+source "$HOME/.bashrc"
+echo "OK!"
 
