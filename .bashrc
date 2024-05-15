@@ -193,3 +193,5 @@ function appsettings {
 		cp -v "$source" "$dest"
 	done
 }
+
+alias ssh='kitten ssh'
