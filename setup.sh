@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 current_dir=$(pwd)
 dotfiles_dir="$HOME/.dotfiles"
