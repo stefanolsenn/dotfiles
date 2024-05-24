@@ -38,6 +38,7 @@ fi
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
+    xterm-kitty) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -57,7 +58,9 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+   # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+   # https://robotmoon.com/bash-prompt-generator/
+    PS1="\[$(tput setaf 43)\]\u\[$(tput setaf 220)\]@\[$(tput setaf 43)\]\h \[$(tput setaf 45)\]\w \[$(tput sgr0)\]$ "
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -195,3 +198,4 @@ function appsettings {
 }
 
 alias ssh='kitten ssh'
+export PYTHONPATH=/home/stefan/.local/lib/python3.11/site-packages
