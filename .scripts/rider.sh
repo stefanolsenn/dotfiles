@@ -35,7 +35,8 @@ if [ -n "$git_root" ]; then
   num_sln_files=${#sln_files[@]}
 
   if [ $num_sln_files -eq 0 ]; then
-    echo -e "${YELLOW}${WARNING} No .sln files found in the repository or its subdirectories.${RESET}"
+    nohup rider sln "." >/dev/null 2>&1 &
+    echo -e "${GREEN}${ROCKET} Rider started in the background.${RESET}"
   elif [ $num_sln_files -eq 1 ]; then
     # Automatically open the single found .sln file
     full_sln_path="$git_root/${sln_files[0]}"
