@@ -162,40 +162,24 @@ export NVM_DIR="$HOME/.nvm"
 
 
 alias rider='$HOME/.scripts/rider.sh'
+alias appsettings='$HOME/.scripts/appsettings.sh'
 alias lines-of-code='find . -name "*.cs" -not -path "*/obj/*" | xargs wc -l'
 
 function replace-all() {
-	grep -r $1 | awk -F ':' '{print $1}' | xargs sed -i 's/$1/$2/g'
+	grep -ri $1 | awk -F ':' '{print $1}' | xargs sed -i 's/$1/$2/g'
 }
 alias sdn='shutdown now'
 . "$HOME/.cargo/env"
 
 
-function appsettings {
-	source="$HOME/repos/cloudfactorydk/appsettings.override.json"
-	dests=($1)
-
-	if [[ $1 == "--edit" ]]; then
-		vim $source
-		return
-	fi
-
-	if [[ ${#dests} -eq 0 ]]; then
-		search=$(grep -ril 'UseAzureKeyVault()' --include \*.cs)
-		if [[ -z "$search" ]]; then
-			echo "No destination could be satisfied"
-			echo "Usage: appsettings <dest>"
-			echo "If no dest is specified, it will try to find all directories where UseAzureKeyVault() defined"
-			return
-		fi
-		for s in $search; do
-			dests+=("$(dirname "$s")")
-		done
-	fi
-	for dest in "${dests[@]}"; do
-		cp -v "$source" "$dest"
-	done
-}
-
 alias ssh='kitten ssh'
 export PYTHONPATH=/home/stefan/.local/lib/python3.11/site-packages
+alias docker-service-id="$HOME/.scripts/docker-service-id.sh"
+
+# pnpm
+export PNPM_HOME="/home/stefan/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
