@@ -21,5 +21,5 @@ if [[ ${#dests} -eq 0 ]]; then
 fi
 for dest in "${dests[@]}"; do
 	echo "$source -> $dest"
-	echo $value > $dest/appsettings.override.json
+	echo $value > $dest/$source
 done
