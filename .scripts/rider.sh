@@ -70,4 +70,3 @@ else
   nohup "$rider_path" >/dev/null 2>&1 &
   echo -e "${GREEN}${ROCKET} Rider started in the background.${RESET}"
 fi
-

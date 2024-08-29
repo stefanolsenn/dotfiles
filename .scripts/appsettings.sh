@@ -2,9 +2,15 @@ source="appsettings.override.json"
 
 if [[ $(which op) == '' ]]; then
 	echo "You need to install the 1password-cli first"
-	return
+	exit 1
 fi
+
 value=$(op read op://Shared/alpha-appsettings.override.json/appsettings.override.json)
+
+if [[ $? -ne 0 ]]; then
+	exit $?
+fi
+
 dests=($1)
 
 if [[ ${#dests} -eq 0 ]]; then
