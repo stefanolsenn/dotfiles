@@ -136,6 +136,11 @@ function dotnet-install {
                 wget https://dot.net/v1/dotnet-install.sh -O $HOME/dotnet-install.sh
                 chmod +x $HOME/dotnet-install.sh
         fi
+
+	if [[ $(pgrep rider) != '' ]]; then
+		echo "### Exit rider before instlling dotnet versions"
+		return
+	fi
         $HOME/dotnet-install.sh $@
 }
 
