@@ -1,5 +1,10 @@
 #!/bin/bash -e
 # Fetch latest version
+
+if [[ ! $USER == root ]]; then
+	echo "run script with sudo"
+	exit 1
+fi
 TAG=$(curl -s https://api.github.com/repos/prometheus/prometheus/releases | jq -r '.[] | .tag_name' | head -n 1)
 echo $TAG
 
