@@ -17,7 +17,7 @@ if [[ $(pgrep 1password) == '' ]]; then
 	sleep 1
 fi
 
-value=$(op read --acount "cloudfactory.1password.eu" op://Shared/alpha-appsettings.override.json/appsettings.override.json)
+value=$(op read --account "cloudfactory.1password.eu" op://Shared/alpha-appsettings.override.json/appsettings.override.json)
 
 if [[ $? -ne 0 ]]; then
 	exit $?
